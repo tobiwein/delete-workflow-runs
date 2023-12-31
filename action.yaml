@@ -1,0 +1,39 @@
+name: 'Delete workflow runs'
+description: 'This action will delete all workflow runs older than the specified age.'
+author: 'tobiwein'
+
+inputs:
+  token:
+    description: 'A GitHub-Token'
+    required: true
+  repository:
+    description: 'The repo'
+    required: true
+  age:
+    description: 'Specify the hours'
+    required: false
+    default: '0'
+  utcOffset:
+    description: 'offset'
+    required: false
+    default: '0'
+  githubApi:
+    description: 'api'
+    required: false
+    default: 'https://api.github.com'
+  actor:
+    description: 'Delete workflow runs associated to a user. Use the login for the user who created the push.'
+    required: false
+  branch:
+    description: 'Delete workflow runs associated to a branch.'
+    required: false
+  event:
+    description: 'Delete workflow runs triggered by the event you specify. For example, push, pull_request or issue.'
+    required: false
+  status:
+    description: 'Delete workflow runs with the check run status or conclusion that you specify. For example, a conclusion can be success or a status can be in_progress.'
+    required: false
+
+runs:
+  using: node20
+  main: dist/index.js
